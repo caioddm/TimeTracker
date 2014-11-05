@@ -1,0 +1,17 @@
+// Place all the styles related to the login controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body{
+  min-height:100%;  
+}
+
+.loginForm{
+  position:absolute;      
+  width:250px;    
+  height:200px;
+  top: 50%;
+  left: 50%;
+  margin-top:-100px; /* negative number 1/2 height */
+  margin-left:-125px; /* negative number 1/2 width */
+}
