@@ -3,6 +3,8 @@ Code::Application.routes.draw do
 
   get "userhome/index"
 
+  resources :manageusers
+  
   devise_for :users
   #root to: 'articles#index'
   # The priority is based upon order of creation:
