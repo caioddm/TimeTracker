@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  start: 2014-11-07 10:43:22
+  end: 2014-11-07 10:43:22
+  comment: MyText
+  type: 1
+  user: 
+
+two:
+  start: 2014-11-07 10:43:22
+  end: 2014-11-07 10:43:22
+  comment: MyText
+  type: 1
+  user: 

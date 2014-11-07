@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  date: 2014-11-07
+  clockin: 2014-11-07 11:13:06
+  clockout: 2014-11-07 11:13:06
+  minutes: 1
+  type: 1
+  user: 
+
+two:
+  date: 2014-11-07
+  clockin: 2014-11-07 11:13:06
+  clockout: 2014-11-07 11:13:06
+  minutes: 1
+  type: 1
+  user: 
