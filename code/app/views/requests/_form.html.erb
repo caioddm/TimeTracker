@@ -1,0 +1,42 @@
+<%= form_for @request, :html => {:class => 'app-form'} do |f| %>
+  <% if @request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@request.errors.count, "error") %> prohibited this request from being saved:</h2>
+
+      <ul>
+      <% @request.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div>
+    <%= f.label :date %>
+    <%= f.date_select :date %>
+  </div>
+  
+  <div>
+    <%= f.label :request_type %>
+    <%= select("request", "request_type", Request::TYPE_DROP, {include_blank: false}) %>
+  </div>
+  
+  <div>
+    <%= f.label :start %>
+    <%= f.time_select :start %>
+  </div>
+  
+  <div>
+    <%= f.label :end %>
+    <%= f.time_select :end %>
+  </div>
+  
+  <div class="app-text-area">
+    <%= f.label :comment %>
+    <%= f.text_area :comment, :cols => 40, :rows => 10 %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

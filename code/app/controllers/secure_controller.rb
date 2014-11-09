@@ -1,3 +1,3 @@
-class SecureController < ApplicationController
+class SecureController < ApplicationController  
   layout "secure"
 end

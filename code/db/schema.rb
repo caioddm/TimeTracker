@@ -11,18 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141107171306) do
+ActiveRecord::Schema.define(:version => 20141109204545) do
 
   create_table "requests", :force => true do |t|
     t.date     "date"
     t.time     "start"
     t.time     "end"
     t.text     "comment"
-    t.integer  "type"
+    t.integer  "request_type"
     t.integer  "integer"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   add_index "requests", ["user_id"], :name => "index_requests_on_user_id"
@@ -32,10 +32,10 @@ ActiveRecord::Schema.define(:version => 20141107171306) do
     t.time     "clockin"
     t.time     "clockout"
     t.integer  "minutes"
-    t.integer  "type"
+    t.integer  "request_type"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   add_index "timesheets", ["user_id"], :name => "index_timesheets_on_user_id"

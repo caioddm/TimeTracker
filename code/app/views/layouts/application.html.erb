@@ -3,10 +3,19 @@
 <head>
   <title>Time Tracker</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag    "common", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= content_for?(:content) ? yield(:content) : yield %>
+	<div id="header">
+		<span id="logoHelper"></span>
+		<%= image_tag("logo.png") %>
+		<p>Time Tracker</p>
+		<%= yield(:header)%>
+	</div>
+	<div class="app-content">
+		<%= content_for?(:content) ? yield(:content) : yield %>		
+	</div>
 </body>
 </html>

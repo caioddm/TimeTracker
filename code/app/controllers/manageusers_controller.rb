@@ -1,4 +1,4 @@
-class ManageusersController < ApplicationController
+class ManageusersController < SecureController
 	def new
 		
 	end	

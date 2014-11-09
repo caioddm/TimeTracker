@@ -1,0 +1,15 @@
+body{background:  url("bg.png") repeat; height:100%; width:100%;margin:0;}
+a, p, span, h2, h3 {font-family: 'Segoe UI';}
+h1 {font-family: 'Segoe UI Light';}
+#header{ height: 12em; width:100%; background-color: #ff3232; border-bottom: solid #ddd 1em;position:relative; }
+#header > img, #header > p {height:80%; width:auto; vertical-align: middle; margin-left: 3em;}
+#header > p{display:inline;font-size:5em;color:#fff;margin-left:5px;}
+#logoHelper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+.logout{float:right; margin-right:3em;position:absolute;bottom:1em;right:0;color:#ddd;}
+.app-content{margin: 1em 3em;}
+.app-form > div{margin:1em 0;}
+.app-text-area > label, .app-text-area > textarea {display:inline-block; vertical-align: top;}
