@@ -9,21 +9,6 @@
     <td><%= f.label :name %></td>
    <td><%= f.text_field :name, autofocus: true %></td>
   </div>
-<<<<<<< HEAD
-  
-  <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address, autofocus: true %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :password %>
-=======
   </tr>
   <br />
   <tr>
@@ -43,7 +28,6 @@
 <tr>
   <div class="field" >
     <td><%= f.label :password %>
->>>>>>> origin/master
     <% if @validatable %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %>
@@ -64,23 +48,11 @@
 	<td><%= f.label :is_admin %><%= f.check_box :is_admin %></td>
 	
   </div>
-<<<<<<< HEAD
-  
-  <div class="field">
-	<%= f.check_box :exempt %>
-	<%= f.label :exempt %>
-  </div>
-
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-=======
 </tr>
 <tr>
   <div class="actions" align="center">
     <td><%= f.submit "Sign up" %></td>
 </tr>
->>>>>>> origin/master
   </div>
   <br/>
   <tr>  	
@@ -88,4 +60,3 @@
   <tr/>
 </table>
 <% end %>
-
