@@ -2,7 +2,13 @@ class RequestsController < SecureController
   # GET /requests
   # GET /requests.json
   def index
-    @requests = Request.all
+    is_admin = current_user.is_admin
+    
+    if is_admin
+      @requests = Request.all
+    else
+      @requests = Request.where(user_id: current_user.id)
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,7 +47,7 @@ class RequestsController < SecureController
   # POST /requests.json
   def create
     @request = Request.new(params[:request])
-
+    @request.user = current_user
     respond_to do |format|
       if @request.save
         format.html { redirect_to @request, notice: 'Request was successfully created.' }

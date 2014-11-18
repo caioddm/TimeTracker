@@ -7,7 +7,17 @@
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
-
+  
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address, autofocus: true %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+  
   <div class="field">
     <%= f.label :password %>
     <% if @validatable %>
@@ -24,6 +34,11 @@
   <div class="field">
 	<%= f.check_box :is_admin %>
 	<%= f.label :is_admin %>
+  </div>
+  
+  <div class="field">
+	<%= f.check_box :exempt %>
+	<%= f.label :exempt %>
   </div>
 
 

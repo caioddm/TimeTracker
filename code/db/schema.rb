@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141109204545) do
+ActiveRecord::Schema.define(:version => 20141118201928) do
 
   create_table "requests", :force => true do |t|
     t.date     "date"
@@ -19,10 +19,10 @@ ActiveRecord::Schema.define(:version => 20141109204545) do
     t.time     "end"
     t.text     "comment"
     t.integer  "request_type"
-    t.integer  "integer"
+    t.integer  "status",       :default => 0
     t.integer  "user_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
   end
 
   add_index "requests", ["user_id"], :name => "index_requests_on_user_id"
