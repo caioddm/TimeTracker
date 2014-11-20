@@ -1,6 +1,9 @@
 <h1>Welcome user!</h1>
 
-<%=Time.now.strftime("%A %d %b %k:%M")%>
+Current Time: <%=Time.now.strftime("%A %d %b %k:%M")%>
+
+<%= link_to 'Requests', requests_path %>
+
 
 <%= form_for :timesheet, url: timesheets_path do |f|%>
 <p>
@@ -9,4 +12,5 @@
 	
 </p>
 <% end %>
+
 
