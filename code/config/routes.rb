@@ -1,4 +1,6 @@
 Code::Application.routes.draw do
+  get "timesheet/new"
+
   get "adminhome/index"
 
   get "userhome/index"
@@ -7,6 +9,7 @@ Code::Application.routes.draw do
   
   resources :requests
   
+  resources :timesheets
   devise_for :users
   #root to: 'articles#index'
   # The priority is based upon order of creation:

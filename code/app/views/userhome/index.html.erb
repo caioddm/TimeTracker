@@ -1,2 +1,12 @@
 <h1>Welcome user!</h1>
-Current Time <%=Time.now%>
+
+<%=Time.now.strftime("%A %d %b %k:%M")%>
+
+<%= form_for :timesheet, url: timesheets_path do |f|%>
+<p>
+	<%= f.submit "Clock-In"%>
+	<%= f.submit "Clock-Out"%>
+	
+</p>
+<% end %>
+
