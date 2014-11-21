@@ -6,7 +6,7 @@ class CreateRequests < ActiveRecord::Migration
       t.time :end
       t.text :comment
       t.integer :type
-      t.integer:status
+      t.integer:integer
       t.references :user
 
       t.timestamps

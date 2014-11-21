@@ -9,7 +9,6 @@ Code::Application.routes.draw do
 
   resources :manageusers
   resources :requests
-  match "/requests/:id" => "requests#update"
   #resources :requests , :collection => {:update_multiple => :post }
     # post 'update_multiple', on: :collection
      
