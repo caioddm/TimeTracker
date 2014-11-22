@@ -2,5 +2,5 @@
 <p>Find me in app/views/adminhome/index.html.erb</p>
 
 <ul>
-	<li><%= link_to "Manage Requests", requests_path %></li>
+	<li><%= link_to "Manage Requests", admin_index_requests_path %></li>
 </ul>

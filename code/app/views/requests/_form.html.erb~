@@ -18,7 +18,7 @@
   
   <div>
     <%= f.label :type %>
-    <%= select("request","request_type", Request::TYPE_DROP, {include_blank: false}) %>
+    <%= select("request","type", Request::TYPE_DROP, {include_blank: false}) %>
   </div>
   
   <div>

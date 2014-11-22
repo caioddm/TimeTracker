@@ -7,6 +7,7 @@ Current Time: <%=Time.now.strftime("%A %d %b %k:%M")%>
 
 <%= form_for :timesheet, url: timesheets_path do |f|%>
 <p>
+	<%= f.hidden_field :user_id, :value => current_user.id %>
 	<%= f.submit "Clock-In"%>
 	<%= f.submit "Clock-Out"%>
 	
