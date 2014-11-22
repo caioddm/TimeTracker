@@ -14,12 +14,13 @@ class ManageusersController < SecureController
 	end
 	
 	def index
-		@users = User.all
+		@users = User.where("is_user_active = ?", true)
 	end
 	
 	def destroy
 	  @user = User.find(params[:id])
-	  @user.destroy
+	  @user.is_user_active = false
+	  @user.save
 	  
 	  redirect_to manageusers_path
 	end
