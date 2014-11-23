@@ -1,15 +1,26 @@
-<h1>All users</h1>
+<h1>All Employees</h1>
 
-<table>
+<%= link_to "Create New Employee", action: "new" %>
+<br><br>
+<table id="table-fields" align="center">
 	<tr>
 		<th>Name</th>
 		<th>Email</th>
-		<th>User Type</th>
+		<th>Employee Type</th>
 		<th>Address</th>
+		<th></th>
 	</tr>
-
+	<%
+	count = 0
+%>
 	<% @users.each do |user| %>
-	<tr>
+	<% trClass = ""
+	if count%2 == 1
+	trClass = "alt"
+	end
+	count = count + 1
+	%>
+	<tr class="<%= trClass%>">
 		<td><%= link_to user.name, edit_manageuser_path(user) %></td>
 		<td><%= user.email %></td>
 		<td><% if user.is_admin %>
@@ -23,5 +34,3 @@
 	</tr>
 	<% end %>
 </table>
-
-<%= link_to "Create New User", action: "new" %>
