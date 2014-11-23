@@ -20,7 +20,6 @@
 		end  %></td>
 		<td><%= user.address %></td>
 		<td><%= link_to "Delete", manageuser_path(user), method: :delete, data: { confirm: 'Are you sure?' }%></td>
-		<td><%= user.is_user_active%></td>
 	</tr>
 	<% end %>
 </table>
