@@ -9,8 +9,9 @@ class ManageusersController < SecureController
     redirect_to manageusers_path
 
   end
-  
+
   def update
+    #check for deactivated user
     @user = User.find(params[:id])
     ui_user = params[:user]
     ui_user.delete(:password)
@@ -22,7 +23,6 @@ class ManageusersController < SecureController
       render 'edit'
     end
   end
-
 
   def index
     @users = User.where("is_user_active = ?", true)

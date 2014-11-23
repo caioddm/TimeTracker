@@ -1,0 +1,55 @@
+<table align="center">
+
+	<tr>
+		<div class="field" >
+			<td><%= f.label :email %></td>
+			<td><%= f.email_field :email, autofocus: true %></td>
+		</div>
+	</tr>
+	<br/>
+
+	<tr>
+		<div class="field" >
+			<td><%= f.label :name %></td>
+			<td><%= f.text_field :name, autofocus: true %></td>
+		</div>
+	</tr>
+	<br />
+	<tr>
+		<div class="field" >
+			<td><%= f.label :address %></td>
+			<td><%= f.text_field :address, autofocus: true %></td>
+		</div>
+	</tr>
+	<br/>
+	<tr>
+		<div class="field" >
+			<td><%= f.label :password %>
+			<% if @validatable %> <em>(<%= @minimum_password_length %> characters minimum)</em> <% end %> </td>
+			<td><%= f.password_field :password, autocomplete: "off" %></td>
+		</div>
+	</tr>
+	<br />
+	<tr>
+		<div class="field" >
+			<td><%= f.label(:password_confirmation, "Password Confirmation") %></td>
+			<td><%= f.password_field :password_confirmation, autocomplete: "off" %></td>
+		</div>
+	</tr>
+	<br />
+	<tr>
+		<div class="field" >
+			<td><%= f.label(:is_admin, "Is User Admin?") %></td>
+			<td><%= f.check_box :is_admin %></td>
+		</div>
+	</tr>
+	<tr>
+		<div class="actions" align="center">
+			<td><%= f.submit buttonText %></td>
+	</tr>
+	</div>
+	<br/>
+	<tr>
+		<td><%= link_to 'Back to Manage Users', manageusers_path %></td>
+	<tr/>
+</table>
