@@ -1,19 +1,46 @@
-<h1>All users</h1>
+<h2>Listing Employees</h2>
+<div>
+	<%= link_to "Create New Employee", action: "new" %>
+	<br>
+	<br>
+</div>
+<table id="table-fields" align="center">
+	<tr>
+		<th>First Name</th>
+		<th>Last Name</th>
+		<th>Email</th>
+		<th>Phone</th>
+		<th>Employee Type</th>
+		<th>Address</th>
+		<th>Exempted Employee</th>
+		<th>Outside Login Allowed</th>
+		<th></th>
+	</tr>
+	<%
+ count = 0
+%>
+	<% @users.each do |user| %>
+	<% trClass = ""
+    if count%2 == 1
+      trClass = "alt"
+    end
+    count = count + 1
+%>
+	<tr class="<%= trClass%>">
+		<td><%= link_to user.name, edit_manageuser_path(user) %></td>
+		<td><%= user.last_name%></td>
+		<td><%= user.email %></td>
+		<td><%= user.phone %></td>
+		<td><% if user.is_admin %>
+		Admin
+		<%
+		else %>Normal<%
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Email</th>
-	<th>Address</th>
-  </tr>
- 
-  <% @users.each do |user| %>
-    <tr>
-      <td><%= user.name %></td>
-      <td><%= user.email %></td>
-      <td><%= user.address %></td>
-    </tr>
-  <% end %>
+		end  %></td>
+		<td><%= user.address %></td>
+		<td><%= user.exempt %></td>
+		<td><%= user.allowOutsideLogin %></td>
+		<td><%= link_to "Delete", manageuser_path(user), method: :delete, data: { confirm: 'Are you sure?' }%></td>
+	</tr>
+	<% end %>
 </table>
-
-<%= link_to "Create New User", action: "new" %>

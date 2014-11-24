@@ -8,6 +8,6 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :user_id
   attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_accessible :address, :allowOutsideLogin, :email, :exempt, :name, :password, :username, :is_admin
-   
+
+  attr_accessible :address, :allowOutsideLogin, :email, :exempt, :phone, :name, :last_name, :password, :username, :is_admin, :is_user_active
 end
