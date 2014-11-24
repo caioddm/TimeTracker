@@ -1,11 +1,14 @@
-<h1>Listing Employees</h1>
-
-<%= link_to "Create New Employee", action: "new" %>
-<br><br>
+<h2>Listing Employees</h2>
+<div>
+	<%= link_to "Create New Employee", action: "new" %>
+	<br>
+	<br>
+</div>
 <table id="table-fields" align="center">
 	<tr>
-		<th>Name</th>
-		<th>Email</th>		
+		<th>First Name</th>
+		<th>Last Name</th>
+		<th>Email</th>
 		<th>Phone</th>
 		<th>Employee Type</th>
 		<th>Address</th>
@@ -14,17 +17,18 @@
 		<th></th>
 	</tr>
 	<%
-	count = 0
+ count = 0
 %>
 	<% @users.each do |user| %>
 	<% trClass = ""
-	if count%2 == 1
-	trClass = "alt"
-	end
-	count = count + 1
-	%>
+    if count%2 == 1
+      trClass = "alt"
+    end
+    count = count + 1
+%>
 	<tr class="<%= trClass%>">
 		<td><%= link_to user.name, edit_manageuser_path(user) %></td>
+		<td><%= user.last_name%></td>
 		<td><%= user.email %></td>
 		<td><%= user.phone %></td>
 		<td><% if user.is_admin %>
