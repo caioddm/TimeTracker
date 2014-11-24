@@ -34,6 +34,12 @@
 	</tr>
 	<tr>
 		<div class="field" >
+			<td><%= f.label :phone %></td>
+			<td><%= f.text_field :phone, autofocus: true %></td>
+		</div>
+	</tr>
+	<tr>
+		<div class="field" >
 			<td><%= f.label(:is_admin, "Is Employee Admin?") %></td>
 			<td><%= f.check_box :is_admin %></td>
 		</div>
