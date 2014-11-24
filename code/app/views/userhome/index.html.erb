@@ -1,4 +1,5 @@
-<h1>Welcome user!</h1>
+
+<h1>Welcome <%=current_user.name%>!</h1>
 
 Current Time: <%=Time.now.strftime("%A %d %b %k:%M")%>
 
@@ -8,10 +9,28 @@ Current Time: <%=Time.now.strftime("%A %d %b %k:%M")%>
 <%= form_for :timesheet, url: timesheets_path do |f|%>
 <p>
 	<%= f.hidden_field :user_id, :value => current_user.id %>
+	<%= f.hidden_field :request_type, { "regular" => 0, "sick leave" => 1, "holiday leave" => 2, "other" => 3}%>
 	<%= f.submit "Clock-In"%>
 	<%= f.submit "Clock-Out"%>
 	
 </p>
 <% end %>
+<table>
+  <tr>
+	<th>Date</th>
+	<th>Clock In</th>
+	<th>Clock Out</th>
+	<th>Time</th>
+	<th>Type</th>
+</tr>
 
-
+<% current_user.timesheets.each do |t| %>
+ <tr>
+	<td><%= t.date %></td>
+	<td><%= t.clockin %></td>
+	<td><%= t.clockout %></td>
+	<td><%= t.minutes %></td>
+	<td><%= t.request_type %></td>	
+	</tr>
+<% end %>
+</table>

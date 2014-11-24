@@ -4,7 +4,12 @@ class UserhomeController < SecureController
       redirect_to :controller=>'adminhome', :action => 'index'
           
     if current_user
-      @sheets = current_user.timesheets
+      @user = current_user
+      @timesheets= @user.timesheets
+      respond_to do |format|
+       format.html # show.html.erb
+       format.json { render json: @user } 
+    end  
     else
       redirect_to new_user_session_path, notice: 'You are not logged in.'
     end
