@@ -4,14 +4,14 @@
 Current Time: <%=Time.now.strftime("%A %d %b %k:%M")%>
 
 <%= link_to 'Requests', requests_path %>
-
+<% button_status = current_user.timesheets.last.clockout?%>
 
 <%= form_for :timesheet, url: timesheets_path do |f|%>
 <p>
 	<%= f.hidden_field :user_id, :value => current_user.id %>
 	<%= f.hidden_field :request_type, { "regular" => 0, "sick leave" => 1, "holiday leave" => 2, "other" => 3}%>
-	<%= f.submit "Clock-In"%>
-	<%= f.submit "Clock-Out"%>
+	<%= f.submit "Clock-In",:disabled => !button_status%>
+	<%= f.submit "Clock-Out",:disabled => button_status%>
 	
 </p>
 <% end %>
@@ -26,11 +26,23 @@ Current Time: <%=Time.now.strftime("%A %d %b %k:%M")%>
 
 <% current_user.timesheets.each do |t| %>
  <tr>
-	<td><%= t.date %></td>
-	<td><%= t.clockin %></td>
-	<td><%= t.clockout %></td>
+	<td><%= t.date.strftime("%A %d %b %Y") %></td>
+	<td><%= t.clockin.strftime("%H:%M") %></td>
+	<%if t.clockout == nil%>
+	  <td><%= t.clockout%> </td>
+	<%else%>
+	  <td><%= t.clockout.strftime("%H:%M") %></td>
+	<%end%>
 	<td><%= t.minutes %></td>
-	<td><%= t.request_type %></td>	
+	<% if 0 == t.request_type%>
+	  <td>Regular</td>
+	<%elsif 1 == t.request_type%>
+	  <td>Sick Leave </td>
+	<%elsif 2 == t.request_type%>
+	  <td>Holiday Leave </td>
+	<%else %>
+	  <td>Other</td>
+	<%end%>		
 	</tr>
 <% end %>
 </table>
