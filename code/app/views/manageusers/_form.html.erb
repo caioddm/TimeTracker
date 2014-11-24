@@ -6,7 +6,6 @@
 			<td><%= f.email_field :email, autofocus: true %></td>
 		</div>
 	</tr>
-	<br/>
 
 	<tr>
 		<div class="field" >
@@ -14,14 +13,12 @@
 			<td><%= f.text_field :name, autofocus: true %></td>
 		</div>
 	</tr>
-	<br />
 	<tr>
 		<div class="field" >
 			<td><%= f.label :address %></td>
 			<td><%= f.text_field :address, autofocus: true %></td>
 		</div>
 	</tr>
-	<br/>
 	<tr>
 		<div class="field" >
 			<td><%= f.label :password %>
@@ -29,27 +26,43 @@
 			<td><%= f.password_field :password, autocomplete: "off" %></td>
 		</div>
 	</tr>
-	<br />
 	<tr>
 		<div class="field" >
 			<td><%= f.label(:password_confirmation, "Password Confirmation") %></td>
 			<td><%= f.password_field :password_confirmation, autocomplete: "off" %></td>
 		</div>
 	</tr>
-	<br />
 	<tr>
 		<div class="field" >
-			<td><%= f.label(:is_admin, "Is User Admin?") %></td>
+			<td><%= f.label(:is_admin, "Is Employee Admin?") %></td>
 			<td><%= f.check_box :is_admin %></td>
 		</div>
 	</tr>
 	<tr>
+		<div class="field" >
+			<td><%= f.label(:allowOutsideLogin, "Allow Outside Login") %></td>
+			<td><%= f.check_box :allowOutsideLogin %></td>
+		</div>
+	</tr>
+	<tr>
+		<div class="field" >
+			<td><%= f.label(:exempt, "Exempt Employee") %></td>
+			<td><%= f.check_box :exempt %></td>
+		</div>
+	</tr>
+	<tr>
+		<td></td><td></td>
+	</tr>
+	<tr>
+		<td></td><td></td>
+	</tr>
+	<tr>
+		<td></td><td></td>
+	</tr>
+	<tr>
 		<div class="actions" align="center">
-			<td><%= f.submit buttonText %></td>
+			<td align="right"><%= f.submit buttonText %></td>
+			<td><%= f.submit 'Cancel'%></td>
 	</tr>
 	</div>
-	<br/>
-	<tr>
-		<td><%= link_to 'Back to Manage Users', manageusers_path %></td>
-	<tr/>
 </table>

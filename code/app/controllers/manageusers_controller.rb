@@ -1,4 +1,12 @@
 class ManageusersController < SecureController
+
+  before_filter :check_for_cancel, :only => [:create, :update]
+  def check_for_cancel
+    if params[:commit] == "Cancel"
+      redirect_to manageusers_path
+    end
+  end
+
   def edit
     @user = User.find(params[:id])
   end
@@ -11,15 +19,18 @@ class ManageusersController < SecureController
   end
 
   def update
-    #check for deactivated user
+    #TODO: check for deactivated user
     @user = User.find(params[:id])
     ui_user = params[:user]
-    ui_user.delete(:password)
+    if ui_user[:password].nil? || ui_user[:password].empty?
+      ui_user.delete(:password)
+    end
     ui_user.delete(:password_confirmation)
     #calling update_attributes for validation checks
     if @user.update_attributes(ui_user)
       redirect_to manageusers_path
     else
+    #TODO: show error messages
       render 'edit'
     end
   end
