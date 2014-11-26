@@ -1,17 +1,10 @@
-<% content_for :javascript_includes do %>
-  <%= javascript_include_tag "usrhome.js" %>
-<% end %>
 
 <h1>Welcome <%=current_user.name%>!</h1>
-<h2 class="day center">Current time:</h2>
-<div class="clockContainer center">	
-	<h2 class="clock-box center"><span id="current_time" class="clock"> <%=Time.now.strftime("%k:%M:%S")%></span></h2>
-	<h3 class="day center"><%=Time.now.strftime("%A %d %b")%></h3>	
-</div>
 
+Current Time: <%=Time.now.strftime("%A %d %b %k:%M")%>
 
 <%= link_to 'Requests', requests_path %>
-<%= link_to 'Timesheets', {:controller=>'timesheet', :action=>'show'} %>
+<%= link_to 'Timesheets',timesheet %>
 
 <% clockin_status = !current_user.timesheets.last || current_user.timesheets.last.clockout? || current_user.timesheets.last.date < Date.today %>
 <% clockout_status = current_user.timesheets.last && !current_user.timesheets.last.clockout? && current_user.timesheets.last.date == Date.today %>
@@ -25,11 +18,7 @@
 	
 </p>
 <% end %>
-
-<% month = Date.today.month%>
-<%year = Date.today.year%>
-
-<table id="table-fields" align="center">
+<table>
   <tr>
 	<th>Date</th>
 	<th>Clock In</th>
@@ -37,15 +26,9 @@
 	<th>Time</th>
 	<th>Type</th>
 </tr>
-<%count = 0%>
-<% current_user.timesheets.each do |t|%>
-<% trClass = ""
-    if count%2 == 1
-      trClass = "alt"
-    end
-    count = count + 1
-%>
- <tr class="<%= trClass%>">
+
+<% current_user.timesheets.each do |t| %>
+ <tr>
 	<td><%= t.date.strftime("%A %d %b %Y") %></td>
 	<td><%= t.clockin.strftime("%H:%M") %></td>
 	<%if t.clockout == nil%>
