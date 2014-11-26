@@ -93,7 +93,8 @@ class RequestsController < SecureController
 
       if @request.status==2 and prev_status==1 #to delete the previously inserted record into the timesheet
         logger.info "Delete the timesheet record that was created earlier"
-        #Timesheet.where(:date=>@request.date).where(:clockin=>@request.start).where(:clockout=>@request.stop).where  (:user=>@request.user).destroy
+        @time=Timesheet.where(:date=>@request.date).where(:clockin=>@request.start).where(:clockout=>@request.end).where(:user=>@request.user)
+	@time.destroy_all
              
       end
 

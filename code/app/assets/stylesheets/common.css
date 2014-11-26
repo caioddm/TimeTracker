@@ -13,3 +13,10 @@ h1 {font-family: 'Segoe UI Light';}
 .app-content{margin: 1em 3em;}
 .app-form > div{margin:1em 0;}
 .app-text-area > label, .app-text-area > textarea {display:inline-block; vertical-align: top;}
+.center{margin:0 auto;}
+.clockContainer{width:200px;}
+.clock-box{width:200px;border-radius: 5px;border:1px solid #98bf21;background-color: #98bf21;}
+.clock{width:100px; display: block; margin:10px auto 15px;}
+.day{width:200px;}
+.menu-links{margin-bottom: 15px;}
+.menu-links > a {margin-right:10px;}

@@ -1,37 +1,45 @@
-<h1>Listing requests</h1>
+<%link_to "home", {:controller=>'adminhome', :action=>'index'}%>
+<h1>Listing Requests</h1>
 
-<table>
-  <tr>
-	<th>Employee name </th>
-	<th>start</th>
-	<th>end </th>
-	<th>type</th>
-	<th>date</th>
-	<th>status</th>
-</tr>
-<% @requests.each do |request| %>
- <tr>
-	<td><%= request.user.name %></td>
-	<td><%= request.start %></td>
-	<td><%= request.end %></td>
-	<td><%= Request::TYPE_DROP.index(request.request_type) %></td>
-	<td><%= request.date %></td>
-        <%=form_for request do |f| %>
-	<td><%= select("request", "status" , Request::STATUS_DROP, :selected=>f.object.status) %></td>
-        <td><%= f.submit %></td>
-        <%end%>
+<table id="table-fields" align="center">
+	<tr>
+		<th>Employee Name </th>
+		<th>Start</th>
+		<th>End </th>
+		<th>Type</th>
+		<th>Date</th>
+		<th>Status</th>
+		<th></th>
+		<th></th>
+		<th></th>
+	</tr>
 
-	
-        <!--<td><%=button_to "submit", {:action=>'update',:controller=>'requests',:id=>request} ,:method=>:put %></td>-->
+	<%
+ count = 0
+%>
+	<% @requests.each do |request| %>
+	<% trClass = ""
+    if count%2 == 1
+      trClass = "alt"
+    end
+    count = count + 1
+%>
+	<tr class="<%= trClass%>">
+		<td><%= request.user.name %></td>
+		<td><%= request.start %></td>
+		<td><%= request.end %></td>
+		<td><%= Request::TYPE_DROP.index(request.request_type) %></td>
+		<td><%= request.date %></td>
+		<%=form_for request do |f| %>
+		<td><%= select("request", "status" , Request::STATUS_DROP, :selected=>f.object.status) %></td>
+		<td><%= f.submit %></td>
+		<%end%>
 
-	
-		
-  </tr>
-  
-<% end %>
+		<!--<td><%=button_to "submit", {:action=>'update',:controller=>'requests',:id=>request} ,:method=>:put %></td>-->
 
+	</tr>
+
+	<% end %>
 
 </table>
-
-
 

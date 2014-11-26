@@ -1,4 +1,4 @@
-class ManageusersController < SecureController
+class ManageusersController < AdminController
 
   before_filter :check_for_cancel, :only => [:create, :update]
   def check_for_cancel
@@ -11,11 +11,28 @@ class ManageusersController < SecureController
     @user = User.find(params[:id])
   end
 
-  def create
-    @user = User.new(params[:user])
-    @user.save
-    redirect_to manageusers_path
+ def new
+    @user = User.new
 
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @user }
+    end
+  end
+
+  def create
+    Rails.logger=Logger.new(STDOUT)
+    @user = User.new(params[:user])
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to manageusers_path, notice: 'User was successfully created.' }
+        format.json { render json: @user, status: :created, location: @request }
+      else
+        logger.info('Error creating the user')
+        format.html { render action: "new" }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def update
