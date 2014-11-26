@@ -12,8 +12,8 @@ Current Time: <%=Time.now.strftime("%A %d %b %k:%M")%>
 <p>
 	<%= f.hidden_field :user_id, :value => current_user.id %>
 	<%= f.hidden_field :request_type, { "regular" => 0, "sick leave" => 1, "holiday leave" => 2, "other" => 3}%>
-	<%= f.submit "Clock-In",:disabled => !button_status%>
-	<%= f.submit "Clock-Out",:disabled => button_status%>
+	<%= f.submit "Clock-In",:disabled => button_status%>
+	<%= f.submit "Clock-Out",:disabled => !button_status%>
 	
 </p>
 <% end %>
