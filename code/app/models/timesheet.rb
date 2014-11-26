@@ -17,5 +17,6 @@ class Timesheet < ActiveRecord::Base
       start_period = Date.new(Date.today.year, Date.today.month, 26)
       end_period = Date.new(Date.today.month < 12 ? Date.today.year : Date.today.year + 1, Date.today.month < 12 ? Date.today.month + 1 : 1, 9)
     end
+    return start_period, end_period
   end
 end
