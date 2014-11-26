@@ -7,8 +7,8 @@ class UserhomeController < SecureController
       @user = current_user
       @timesheets= @user.timesheets
       respond_to do |format|
-       format.html # show.html.erb
-       format.json { render json: @user } 
+      format.html # show.html.erb
+      format.json { render json: @user } 
     end  
     else
       redirect_to new_user_session_path, notice: 'You are not logged in.'
