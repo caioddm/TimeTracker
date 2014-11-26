@@ -20,6 +20,6 @@ class UserhomeController < SecureController
     
     @start_period = start_period
     @end_period = end_period
-    @timesheets = current_user.timesheets
+    @timesheets = current_user.timesheets.where("date >= ? AND date <= ?", start_period, end_period)
   end
 end
