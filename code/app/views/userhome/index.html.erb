@@ -9,10 +9,6 @@
 	<h3 class="day center"><%=Time.now.strftime("%A %d %b")%></h3>	
 </div>
 
-
-<%= link_to 'Requests', requests_path %>
-<%= link_to 'Timesheets', {:controller=>'timesheet', :action=>'show'} %>
-
 <% clockin_status = !current_user.timesheets.last || current_user.timesheets.last.clockout? || current_user.timesheets.last.date < Date.today %>
 <% clockout_status = current_user.timesheets.last && !current_user.timesheets.last.clockout? && current_user.timesheets.last.date == Date.today %>
 
