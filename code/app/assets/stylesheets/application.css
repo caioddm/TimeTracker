@@ -41,6 +41,7 @@
 		position:relative;
 		left:50%;
 		text-align:center;
+		height: 70px;
 	}
 	#talltabs-apple ul li {
 		display:block;
