@@ -37,11 +37,11 @@ class RequestsController < SecureController
   # GET /requests/new
   # GET /requests/new.json
   def new
-    @user = User.new
+    @request = Request.new
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @user }
+      format.json { render json: @request }
     end
   end
 
