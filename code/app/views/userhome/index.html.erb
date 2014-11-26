@@ -1,6 +1,14 @@
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag "usrhome.js" %>
+<% end %>
 
 <h1>Welcome <%=current_user.name%>!</h1>
-Current Time: <%=Time.now.strftime("%A %d %b %k:%M")%>
+<h2 class="day center">Current time:</h2>
+<div class="clockContainer center">	
+	<h2 class="clock-box center"><span id="current_time" class="clock"> <%=Time.now.strftime("%k:%M:%S")%></span></h2>
+	<h3 class="day center"><%=Time.now.strftime("%A %d %b")%></h3>	
+</div>
+
 
 <%= link_to 'Requests', requests_path %>
 <%= link_to 'Timesheets', {:controller=>'timesheet', :action=>'show'} %>
