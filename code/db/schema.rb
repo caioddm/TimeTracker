@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141124061854) do
+ActiveRecord::Schema.define(:version => 20141126175717) do
 
   create_table "requests", :force => true do |t|
     t.date     "date"
@@ -29,8 +29,8 @@ ActiveRecord::Schema.define(:version => 20141124061854) do
 
   create_table "timesheets", :force => true do |t|
     t.date     "date"
-    t.time     "clockin"
-    t.time     "clockout"
+    t.datetime "clockin"
+    t.datetime "clockout"
     t.integer  "minutes"
     t.integer  "request_type"
     t.integer  "user_id"
