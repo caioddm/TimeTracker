@@ -1,3 +1,5 @@
+
+<%= link_to 'Create', new_request_path %>
 <h1>Listing Requests</h1>
 
 <table id="table-fields">
@@ -31,9 +33,13 @@
 		<td><%= request.date %></td>
 		<td><%= Request::TYPE_DROP.index(request.request_type) %></td>
 		<td><%= Request::STATUS_DROP.index(request.status)%></td>
+		<!--<td><%= request.status %></td>-->
 		<td><%= link_to 'Show', request %></td>
-		<td><%= link_to 'Edit', edit_request_path(request) %></td><!--To implement: Employee can't edit once decsion is made-->
+		
 		<td><%= link_to 'Destroy', request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		<td><% if request.status==0 %>
+			<%= link_to 'Edit', edit_request_path(request) %>
+		<%end%></td>
 	</tr>
 	<% end %>
 </table>
