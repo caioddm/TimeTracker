@@ -24,6 +24,46 @@
 	padding: 3px 7px 2px 7px;
 }
 
+#talltabs-apple {
+		clear:left;
+		float:left;
+		padding:0;
+		border-top:6px solid #AAD36E;
+		width:100%;
+		overflow:hidden;
+		font-family:Georgia, serif;
+	}
+	#talltabs-apple ul {
+		float:left;
+		margin:0;
+		padding:0;
+		list-style:none;
+		position:relative;
+		left:50%;
+		text-align:center;
+	}
+	#talltabs-apple ul li {
+		display:block;
+		float:left;
+		list-style:none;
+		margin:0;
+		padding:0;
+		position:relative;
+		right:50%;
+	}
+	#talltabs-apple ul li a {
+		display:block;
+		float:left;
+		margin:0 1px 0 0;
+		padding:20px 10px 6px 10px;
+		background:#AAD36E;
+		text-decoration:none;
+		color:#fff;
+	}
+	#talltabs-apple ul li a:hover {
+		padding:35px 10px 6px 10px;
+	}
+
 #table-fields th {
 	font-size: 1.1em;
 	text-align: left;
@@ -41,4 +81,6 @@
 .error {
 	color: #D8000C;
 }
-a, a:visited{color:#5B7213}
+a, a:visited {
+	color: #5B7213
+}
