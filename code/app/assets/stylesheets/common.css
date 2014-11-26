@@ -9,7 +9,7 @@ h1 {font-family: 'Segoe UI Light';}
     height: 100%;
     vertical-align: middle;
 }
-.logout{float:right; margin-right:3em;position:absolute;bottom:1em;right:0;color:#ddd;}
+.logout{float:right; margin-right:3em;position:absolute;bottom:1em;right:0;color:oldlace;}
 .app-content{margin: 1em 3em;}
 .app-form > div{margin:1em 0;}
 .app-text-area > label, .app-text-area > textarea {display:inline-block; vertical-align: top;}
