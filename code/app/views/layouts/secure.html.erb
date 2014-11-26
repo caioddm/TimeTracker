@@ -4,7 +4,16 @@
 	</div>
 <%end%>
 
-<% content_for :content do %>	
+<% content_for :content do %>
+	<div class="menu-links">	
+		<% if current_user.is_admin?%>
+			<%= link_to "Home", {:controller=>'adminhome', :action=>'index'} %>
+			<%= link_to "Manage users", {:controller=>'manageusers', :action=>'index'} %>
+		<% else %>
+			<%= link_to "Home", {:controller=>'userhome', :action=>'index'} %>
+		<%end%>
+		<%= link_to "Requests", {:controller=>'requests', :action=>'index'} %>
+	</div>
 	<%= yield %>
 <% end %>
 
