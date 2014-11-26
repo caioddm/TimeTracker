@@ -4,14 +4,15 @@
 Current Time: <%=Time.now.strftime("%A %d %b %k:%M")%>
 
 <%= link_to 'Requests', requests_path %>
-<% button_status = current_user.timesheets.last && !current_user.timesheets.last.clockout?%>
+<% clockin_status = !current_user.timesheets.last || current_user.timesheets.last.clockout? || current_user.timesheets.last.date < Date.today %>
+<% clockout_status = current_user.timesheets.last && !current_user.timesheets.last.clockout? && current_user.timesheets.last.date == Date.today %>
 
 <%= form_for :timesheet, url: timesheets_path do |f|%>
 <p>
 	<%= f.hidden_field :user_id, :value => current_user.id %>
 	<%= f.hidden_field :request_type, { "regular" => 0, "sick leave" => 1, "holiday leave" => 2, "other" => 3}%>
-	<%= f.submit "Clock-In",:disabled => button_status%>
-	<%= f.submit "Clock-Out",:disabled => !button_status%>
+	<%= f.submit "Clock-In",:disabled => !clockin_status%>
+	<%= f.submit "Clock-Out",:disabled => !clockout_status%>
 	
 </p>
 <% end %>

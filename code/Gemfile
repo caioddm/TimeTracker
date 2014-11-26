@@ -39,3 +39,4 @@ gem 'jquery-rails'
 
 #Devise auth
 gem 'devise'
+gem 'time_difference'
