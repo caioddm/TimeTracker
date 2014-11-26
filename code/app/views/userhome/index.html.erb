@@ -17,7 +17,11 @@ Current Time: <%=Time.now.strftime("%A %d %b %k:%M")%>
 	
 </p>
 <% end %>
-<table>
+
+<% month = Date.today.month%>
+<%year = Date.today.year%>
+
+<table id="table-fields" align="center">
   <tr>
 	<th>Date</th>
 	<th>Clock In</th>
@@ -25,9 +29,15 @@ Current Time: <%=Time.now.strftime("%A %d %b %k:%M")%>
 	<th>Time</th>
 	<th>Type</th>
 </tr>
-
-<% current_user.timesheets.each do |t| %>
- <tr>
+<%count = 0%>
+<% current_user.timesheets.each do |t|%>
+<% trClass = ""
+    if count%2 == 1
+      trClass = "alt"
+    end
+    count = count + 1
+%>
+ <tr class="<%= trClass%>">
 	<td><%= t.date.strftime("%A %d %b %Y") %></td>
 	<td><%= t.clockin.strftime("%H:%M") %></td>
 	<%if t.clockout == nil%>
