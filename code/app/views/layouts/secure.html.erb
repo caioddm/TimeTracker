@@ -9,18 +9,18 @@
 	<ul>
 		<% if current_user.is_admin?%>
 		<li>
-			<%= link_to "Home", {:controller=>'adminhome', :action=>'index'} %>
+			<b><%= link_to "Home", {:controller=>'adminhome', :action=>'index'} %></b>
 		</li>
 		<li>
-			<%= link_to "Manage Employees", {:controller=>'manageusers', :action=>'index'} %>
+			<b><%= link_to "Manage Employees", {:controller=>'manageusers', :action=>'index'} %></b>
 		</li>
 		<% else %>
 		<li>
-			<%= link_to "Home", {:controller=>'userhome', :action=>'index'} %>
+			<b><%= link_to "Home", {:controller=>'userhome', :action=>'index'} %></b>
 		</li>
 		<%end%>
 		<li>
-			<%= link_to "Manage Requests", {:controller=>'requests', :action=>'index'} %>
+			<b><%= link_to "Manage Requests", {:controller=>'requests', :action=>'index'} %></b>
 		</li>
 	</ul>
 </div>
