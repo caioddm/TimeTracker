@@ -7,7 +7,7 @@ Code::Application.routes.draw do
 
 
   get "requests/admin_index"
-  get "timesheet/show"
+  
 
   resources :manageusers
   resources :requests

@@ -1,9 +1,10 @@
 
 <h1>Welcome <%=current_user.name%>!</h1>
+
 Current Time: <%=Time.now.strftime("%A %d %b %k:%M")%>
 
 <%= link_to 'Requests', requests_path %>
-<%= link_to 'Timesheets', {:controller=>'timesheet', :action=>'show'} %>
+<%= link_to 'Timesheets',timesheet %>
 
 <% clockin_status = !current_user.timesheets.last || current_user.timesheets.last.clockout? || current_user.timesheets.last.date < Date.today %>
 <% clockout_status = current_user.timesheets.last && !current_user.timesheets.last.clockout? && current_user.timesheets.last.date == Date.today %>
