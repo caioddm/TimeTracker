@@ -99,7 +99,8 @@ class RequestsController < SecureController
 
       is_admin = current_user.is_admin
       if is_admin
-        format.html { redirect_to :back, notice: 'Changes to requests were updated successfully' }       
+	logger.info "inside notice"
+        format.html { redirect_to @request, notice: 'Request Updated' }       
       else
         format.html { redirect_to @request, notice: 'Request was successfully updated.' }
         format.json { head :no_content }
