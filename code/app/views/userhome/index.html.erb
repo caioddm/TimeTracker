@@ -38,7 +38,7 @@
 	<th>Type</th>
 </tr>
 <%count = 0%>
-<% current_user.timesheets.each do |t|%>
+<% @timesheets.each do |t|%>
 <% trClass = ""
     if count%2 == 1
       trClass = "alt"

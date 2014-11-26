@@ -1,13 +1,14 @@
 <h1>Welcome Admin!!!</h1>
 
 <table id="table-fields" align="center">
+
 	<tr>
 		<th>Employee</th>
 		<th>Time</th>
 		<th>Type</th>
 	</tr>
 	<% count = 0%>
-	<% @timesheet = Timesheet.joins(:user).group([:user_id,:request_type]).select("user_id, sum(minutes) as minutes,request_type").order(:name)%>
+
 	<% @timesheet.each do |t|%>
 	<% trClass = ""
     if count%2 == 1
