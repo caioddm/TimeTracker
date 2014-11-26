@@ -1,33 +1,8 @@
-<%= form_for :user, url:manageusers_path do |f| %>
+<center>
+	<h2>New Employee Setup</h2>
+</center>
 
-  <div>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-  
-  <div>
-    <%= f.label :email %>
-    <%= f.email_field :email %>
-  </div>
-  
-  <div>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </div>
-  
-  <div>
-    <%= f.label :address %>
-    <%= f.text_field :address %>
-  </div>
- 
-  <div>
-	<%= f.check_box :is_admin %>
-	<%= f.label :is_admin %>
-  </div>
- 
-  <div>
-    <%= f.submit "Create User" %>
-	
-    <%= button_tag "Cancel", :type => 'button'%>
-  </div>
+
+<%= form_for :user, url:manageusers_path do |f| %>
+	<%= render partial: "form", locals: {f: f, buttonText: 'Create'} %>
 <% end %>

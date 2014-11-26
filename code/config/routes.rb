@@ -1,4 +1,6 @@
 Code::Application.routes.draw do
+  get "timesheet/new"
+
   get "adminhome/index"
 
   get "userhome/index"
@@ -9,12 +11,13 @@ Code::Application.routes.draw do
 
   resources :manageusers
   resources :requests
+  
+  resources :timesheets
+
   match "/requests/:id" => "requests#update"
   #resources :requests , :collection => {:update_multiple => :post }
     # post 'update_multiple', on: :collection
-     
- 
- 
+      
   devise_for :users
   #root to: 'articles#index'
   # The priority is based upon order of creation:
