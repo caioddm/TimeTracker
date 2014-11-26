@@ -1,12 +1,13 @@
 <% if @user.errors.any? %>
 <div id="error_explanation" class="error">
 	<h2><%= pluralize(@user.errors.count, "error") %> prohibited this request from being saved:</h2>
-
 	<ul>
 		<% @user.errors.full_messages.each do |msg| %>
+
 		<li>
 			<%= msg %>
 		</li>
+
 		<% end %>
 	</ul>
 </div>
@@ -50,9 +51,19 @@
 			<td><%= f.password_field :password, autocomplete: "off" %></td>
 		</div>
 	</tr>
+	<% if buttonText == 'Save'%>
+	<tr>
+		<td>(Leave blank if you don't want
+		<br/>
+		to update the password.)</td>
+		<td></td>
+		</div>
+	</tr>
+	<% end%>
+
 	<tr>
 		<div class="field" >
-			<td><%= f.label(:password_confirmation, "Password Confirmation") %></td>
+			<td><%= f.label(:password_confirmation, "Password Confirmation ") %></td>
 			<td><%= f.password_field :password_confirmation, autocomplete: "off" %></td>
 		</div>
 	</tr>

@@ -11,5 +11,6 @@ class User < ActiveRecord::Base
 
   attr_accessible :address, :allowOutsideLogin, :email, :exempt, :phone, :name, :last_name, :password, :username, :is_admin, :is_user_active
   validates :name, presence: true
-  validates :phone, format: { with: /\d{10}/, message: "shall be of 10 digits" }
+  validates :phone, format: { with: /\d{3}-\d{3}-\d{4}/, message: " should have the format xxx-xxx-xxxx with only 10 digits" }
+  
 end
