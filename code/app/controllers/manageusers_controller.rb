@@ -1,4 +1,4 @@
-class ManageusersController < SecureController
+class ManageusersController < AdminController
 
   before_filter :check_for_cancel, :only => [:create, :update]
   def check_for_cancel

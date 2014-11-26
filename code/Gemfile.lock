@@ -104,6 +104,8 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.4)
     tilt (1.4.1)
+    time_difference (0.3.2)
+      activesupport
     treetop (1.4.15)
       polyglot
       polyglot
@@ -256,4 +258,5 @@ DEPENDENCIES
   rails (= 3.2.19)
   sass-rails (~> 3.2.3)
   sqlite3
+  time_difference
   uglifier (>= 1.0.3)
