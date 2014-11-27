@@ -23,7 +23,7 @@
 	<%= f.submit "Clock-Out", :class => "alizarin-flat-button"%>
 	<%end%>
 	<div>
-		<span style="float: left; font-size:18px; font-weight: bold; margin-right:15px;">Timesheet from <%= @start_period%> to <%= @end_period%></span>
+		<span style="float: left; font-size:18px; font-weight: bold; margin-right:15px;">Timesheet from <%= @start_period.strftime("%m/%d/%y")%> to <%= @end_period.strftime("%m/%d/%y")%></span>
 	</div>
 </p>
 <% end %>

@@ -6,7 +6,7 @@
 		<th>Start</th>
 		<th>End </th>
 		<th>Type</th>
-		<th>Date</th>
+		<th>Note</th>
 		<th>Status</th>
 		<th></th>
 	</tr>
@@ -23,10 +23,10 @@
 %>
 	<tr class="<%= trClass%>">
 		<td><%= request.user.name %></td>
-		<td><%= request.start %></td>
-		<td><%= request.end %></td>
+		<td><%= request.start.strftime("%A %d %b %Y") %></td>
+		<td><%= request.end.strftime("%A %d %b %Y") %></td>
 		<td><%= Request::TYPE_DROP.index(request.request_type) %></td>
-		<td><%= request.date %></td>
+		<td><%= request.comment%></td>
 		<%=form_for request do |f| %>
 		<td><%= select("request", "status" , Request::STATUS_DROP, :selected=>f.object.status) %></td>
 		<td><%= f.submit %></td>
