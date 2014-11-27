@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141126191043) do
+ActiveRecord::Schema.define(:version => 20141127002939) do
 
   create_table "requests", :force => true do |t|
     t.date     "date"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20141126191043) do
     t.integer  "user_id"
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
+    t.integer  "minutes"
   end
 
   add_index "requests", ["user_id"], :name => "index_requests_on_user_id"

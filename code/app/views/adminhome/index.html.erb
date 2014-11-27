@@ -1,40 +1,38 @@
-<h1>Welcome Admin!!!</h1>
+<h1>Welcome <%=current_user.name%>!</h1>
 
-<ul>
-	<li><%= link_to "Manage Requests", requests_path %></li>
-	<li><%= link_to "Manage Employees", manageusers_path %></li>
-</ul>
-
+<div>
+		<span style="float: left; font-size:18px; font-weight: bold; margin-right:15px;">Timesheet from <%= @start_period%> to <%= @end_period%></span>
+</div>
+<br/>
 <table id="table-fields" align="center">
-  <tr>
-	<th>Employee</th>
-	<th>Time</th>
-	<th>Type</th>
-</tr>
-<%count = 0%>
-<%@timesheet = Timesheet.joins(:user).group([:user_id,:request_type]).select("user_id, sum(minutes) as minutes,request_type").order(:name)%>
-<% @timesheet.each do |t|%>
-<% trClass = ""
+
+	<tr>
+		<th>Employee</th>
+		<th>Time</th>
+		<th>Type</th>
+	</tr>
+	<% count = 0%>
+
+	<% @timesheet.each do |t|%>
+	<% trClass = ""
     if count%2 == 1
       trClass = "alt"
     end
     count = count + 1
 %>
- <tr class="<%= trClass%>">
-	<td>
-		<%=t.user.name%>
-		</td>
-	<td><%= t.minutes %></td>
-	<% if 0 == t.request_type%>
-	  <td>Regular</td>
-	<%elsif 1 == t.request_type%>
-	  <td>Sick Leave </td>
-	<%elsif 2 == t.request_type%>
-	  <td>Holiday Leave </td>
-	<%else %>
-	  <td>Other</td>
-	<%end%>		
+	<tr class="<%= trClass%>">
+		<td> <%= t.user.name%> </td>
+		<td><%= t.minutes %></td>
+		<% if 0 == t.request_type%>
+		<td>Regular</td>
+		<%elsif 1 == t.request_type%>
+		<td>Sick Leave </td>
+		<%elsif 2 == t.request_type%>
+		<td>Holiday Leave </td>
+		<%else %>
+		<td>Other</td>
+		<%end%>
 	</tr>
-<% end %>
+	<% end %>
 </table>
 

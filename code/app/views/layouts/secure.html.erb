@@ -1,20 +1,33 @@
 <% content_for :header do%>
-	<div class="logout">
-		<b>Hi, <%= current_user.name %>!</b> (<%= link_to('Log out', destroy_user_session_path, :method => :delete) %>)
-	</div>
+<div class="logout">
+	<b>Hi, <%= current_user.name %>!</b> (<%= link_to('Log out', destroy_user_session_path, :method => :delete) %>)
+</div>
 <%end%>
 
 <% content_for :content do %>
-	<div class="menu-links">	
+<div id="talltabs-apple">
+	<ul>
 		<% if current_user.is_admin?%>
-			<%= link_to "Home", {:controller=>'adminhome', :action=>'index'} %>
-			<%= link_to "Manage Employees", {:controller=>'manageusers', :action=>'index'} %>
+		<li>
+			<b><%= link_to "Home", {:controller=>'adminhome', :action=>'index'} %></b>
+		</li>
+		<li>
+			<b><%= link_to "Manage Employees", {:controller=>'manageusers', :action=>'index'} %></b>
+		</li>
 		<% else %>
-			<%= link_to "Home", {:controller=>'userhome', :action=>'index'} %>
+		<li>
+			<b><%= link_to "Home", {:controller=>'userhome', :action=>'index'} %></b>
+		</li>
+		<li>
+			<b> <%= link_to 'Timesheets', {:controller=>'timesheet', :action=>'show'} %></b>
+		</li>
 		<%end%>
-		<%= link_to "Manage Requests", {:controller=>'requests', :action=>'index'} %>
-	</div>
-	<%= yield %>
+		<li>
+			<b><%= link_to "Manage Requests", {:controller=>'requests', :action=>'index'} %></b>
+		</li>
+	</ul>
+</div>
+<%= yield %>
 <% end %>
 
 <%= render :file => 'layouts/application' %>
