@@ -88,7 +88,7 @@ class RequestsController < SecureController
       if @request.status==1
         if prev_status!=1
           logger.info "timesheet updated"
-          Timesheet.create(date: @request.date, clockin: @request.start, clockout: @request.end,minutes: @request.minutes, user: @request.user)
+          Timesheet.create(date: @request.date, clockin: @request.start, clockout: @request.end,minutes: @request.minutes, user: @request.user,request_type: @request.request_type)
         else
           logger.info "A timesheet record already exists!" 
         end
