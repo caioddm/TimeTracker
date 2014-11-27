@@ -1,7 +1,7 @@
 <h1>Welcome <%=current_user.name%>!</h1>
 
 <div>
-		<span style="float: left; font-size:18px; font-weight: bold; margin-right:15px;">Timesheet from <%= @start_period%> to <%= @end_period%></span>
+		<span style="float: left; font-size:18px; font-weight: bold; margin-right:15px;">Timesheet from <%= @start_period.strftime("%m/%d/%y")%> to <%= @end_period.strftime("%m/%d/%y")%></span>
 </div>
 <br/>
 <table id="table-fields" align="center">
