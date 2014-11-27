@@ -85,3 +85,7 @@
 a, a:visited {
 	color: #5B7213
 }
+#error_explanation{
+	width:450px;
+	margin:5px auto;
+}

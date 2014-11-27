@@ -1,6 +1,6 @@
 <%= form_for @request, :html => {:class => 'app-form'} do |f| %>
   <% if @request.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" class="error">
       <h2><%= pluralize(@request.errors.count, "error") %> prohibited this request from being saved:</h2>
 
       <ul>
