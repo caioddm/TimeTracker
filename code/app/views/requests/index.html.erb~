@@ -1,5 +1,4 @@
-
-<%= link_to 'Create', new_requests_path %>
+<%= link_to 'Create new request', new_request_path %>
 <h1>Listing Requests</h1>
 
 <table id="table-fields">
@@ -7,8 +6,10 @@
 		<th>Employee Name</th>
 		<th>Start</th>
 		<th>End </th>
-		<th>Type</th>
+		<th>Time</th>
+		
 		<th>Date</th>
+		<th>Type</th>
 		<th>Status</th>
 		<th></th>
 		<th></th>
@@ -28,8 +29,9 @@
 
 	<tr class="<%= trClass%>">
 		<td><%= request.user.name %></td>
-		<td><%= request.start %></td>
-		<td><%= request.end %></td>
+		<td><%= request.start.strftime("%A %d %b %Y") %></td>
+		<td><%= request.end.strftime("%A %d %b %Y") %></td>
+		<td><%= request.minutes %></td>
 		<td><%= request.date %></td>
 		<td><%= Request::TYPE_DROP.index(request.request_type) %></td>
 		<td><%= Request::STATUS_DROP.index(request.status)%></td>

@@ -2,7 +2,7 @@ class RequestsController < SecureController
   # GET /requests
   # GET /requests.json
   def admin_index
-	 @requests = Request.all
+	 @requests = Request.where(status: 0)
 	 respond_to do |format|
 	 format.html # admin_index.html.erb
          format.json { render json: @requests }
@@ -56,6 +56,9 @@ class RequestsController < SecureController
     @request = Request.new(params[:request])
     @request.user = current_user
     respond_to do |format|
+    @time1 = @request.start
+    @time2 = @request.end
+    @request.minutes = TimeDifference.between(@time1, @time2).in_minutes
       if @request.save
         format.html { redirect_to @request, notice: 'Request was successfully created.' }
         format.json { render json: @request, status: :created, location: @request }
@@ -74,34 +77,22 @@ class RequestsController < SecureController
     
     respond_to do |format|
     @request = Request.find(params[:id])
-       
-    #to check if request was already approved
-    prev_status=@request.status
-       
-    logger.debug "The object name is #{@request.user.name}"
-   
-
+      
     if @request.update_attributes(params[:request])
       if @request.status==1
-        if prev_status!=1
-          logger.info "timesheet updated"
-          Timesheet.create(date: @request.date, clockin: @request.start, clockout: @request.end, user: @request.user)
-        else
-          logger.info "A timesheet record already exists!" 
-        end
-      end
-
-      if @request.status==2 and prev_status==1 #to delete the previously inserted record into the timesheet
-        logger.info "Delete the timesheet record that was created earlier"
-        @time=Timesheet.where(:date=>@request.date).where(:clockin=>@request.start).where(:clockout=>@request.end).where(:user=>@request.user)
-	@time.destroy_all
-             
+        
+        logger.info "timesheet updated"
+        Timesheet.create(date: @request.date, clockin: @request.start, clockout: @request.end,minutes: @request.minutes, user: @request.user,request_type: @request.request_type)
+        
       end
 
       is_admin = current_user.is_admin
-      if is_admin
-	logger.info "inside notice"
-        format.html { redirect_to @request, notice: 'Request Updated' }       
+      if is_admin 
+	if @request.status==0
+	  format.html { redirect_to :back, notice: 'Request Updated' }  
+	else   
+	  logger.info "inside notice"
+          format.html { redirect_to @request, notice: 'Request Updated' }       
       else
         format.html { redirect_to @request, notice: 'Request was successfully updated.' }
         format.json { head :no_content }
