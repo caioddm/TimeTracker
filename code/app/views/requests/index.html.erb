@@ -11,8 +11,9 @@
 		<th>Employee Name</th>
 		<th>Start</th>
 		<th>End </th>
-		<th>Type</th>
+		<th>Time</th>
 		<th>Date</th>
+		<th>Type</th>
 		<th>Status</th>
 		<th></th>
 		<th></th>
@@ -34,6 +35,7 @@
 		<td><%= request.user.name %></td>
 		<td><%= request.start %></td>
 		<td><%= request.end %></td>
+		<td><%= request.minutes %></td>
 		<td><%= request.date %></td>
 		<td><%= Request::TYPE_DROP.index(request.request_type) %></td>
 		<td><%= Request::STATUS_DROP.index(request.status)%></td>

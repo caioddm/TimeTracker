@@ -56,6 +56,9 @@ class RequestsController < SecureController
     @request = Request.new(params[:request])
     @request.user = current_user
     respond_to do |format|
+    @time1 = @request.start
+    @time2 = @request.end
+    @request.minutes = TimeDifference.between(@time1, @time2).in_minutes
       if @request.save
         format.html { redirect_to @request, notice: 'Request was successfully created.' }
         format.json { render json: @request, status: :created, location: @request }
@@ -85,7 +88,7 @@ class RequestsController < SecureController
       if @request.status==1
         if prev_status!=1
           logger.info "timesheet updated"
-          Timesheet.create(date: @request.date, clockin: @request.start, clockout: @request.end, user: @request.user)
+          Timesheet.create(date: @request.date, clockin: @request.start, clockout: @request.end,minutes: @request.minutes, user: @request.user)
         else
           logger.info "A timesheet record already exists!" 
         end
