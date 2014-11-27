@@ -22,7 +22,7 @@
 	</tr>
 	<tr>
 		<div class="field" >
-			<td><%= f.label :name, "First Name" %></td>
+			<td><%= f.label :name, "First Name" %><span class="req"> *</span></td>
 			<td><%= f.text_field :name, autofocus: true %></td>
 		</div>
 	</tr>
@@ -34,20 +34,20 @@
 	</tr>
 	<tr>
 		<div class="field" >
-			<td><%= f.label :phone %></td>
+			<td><%= f.label :phone %><span class="req"> *</span></td>
 			<td><%= f.text_field :phone, autofocus: true %></td>
 		</div>
 	</tr>
 	<tr>
 		<div class="field" >
-			<td><%= f.label :email %></td>
+			<td><%= f.label :email %><span class="req"> *</span></td>
 			<td><%= f.email_field :email, autofocus: true %></td>
 		</div>
 	</tr>
 	<tr>
 		<div class="field" >
 			<td><%= f.label :password %>
-			<% if @validatable %> <em>(<%= @minimum_password_length %> characters minimum)</em> <% end %> </td>
+			<% if @validatable %> <em>(<%= @minimum_password_length %> characters minimum)</em> <% end %> <span class="req"> *</span></td>
 			<td><%= f.password_field :password, autocomplete: "off" %></td>
 		</div>
 	</tr>
@@ -63,7 +63,7 @@
 
 	<tr>
 		<div class="field" >
-			<td><%= f.label(:password_confirmation, "Password Confirmation ") %></td>
+			<td><%= f.label(:password_confirmation, "Password Confirmation ") %><span class="req"> *</span></td>
 			<td><%= f.password_field :password_confirmation, autocomplete: "off" %></td>
 		</div>
 	</tr>
