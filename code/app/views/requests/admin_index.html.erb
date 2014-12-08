@@ -5,6 +5,7 @@
 		<th>Employee Name </th>
 		<th>Start</th>
 		<th>End </th>
+		<th>Time (in Hours)</th>
 		<th>Type</th>
 		<th>Note</th>
 		<th>Status</th>
@@ -25,6 +26,7 @@
 		<td><%= request.user.name %></td>
 		<td><%= request.start.strftime("%A %d %b %Y") %></td>
 		<td><%= request.end.strftime("%A %d %b %Y") %></td>
+		<td><%= Timesheet.getMinutesInHours(request.minutes) %></td>
 		<td><%= Request::TYPE_DROP.index(request.request_type) %></td>
 		<td><%= request.comment%></td>
 		<%=form_for request do |f| %>

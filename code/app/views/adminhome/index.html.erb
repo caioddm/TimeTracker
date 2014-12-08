@@ -8,7 +8,7 @@
 
 	<tr>
 		<th>Employee</th>
-		<th>Time</th>
+		<th>Time (in Hours)</th>
 		<th>Type</th>
 	</tr>
 	<% count = 0%>
@@ -22,7 +22,7 @@
 %>
 	<tr class="<%= trClass%>">
 		<td> <%= t.user.name%> </td>
-		<td><%= t.minutes %></td>
+		<td><%= t.getMinutesInHours %></td>
 		<% if 0 == t.request_type%>
 		<td>Regular</td>
 		<%elsif 1 == t.request_type%>

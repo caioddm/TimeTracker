@@ -79,6 +79,7 @@ class RequestsController < SecureController
     @request = Request.find(params[:id])
       
     if @request.update_attributes(params[:request])
+      @request.update_attribute(:minutes, TimeDifference.between(@request.start, @request.end).in_minutes)
       if @request.status==1
         
         logger.info "timesheet updated"

@@ -19,4 +19,46 @@ class Timesheet < ActiveRecord::Base
     end
     return start_period, end_period
   end
+  
+  def self.getMinutesInHours(min)
+    result = "00:00";
+    if(min != nil)
+      leftMinutes = min % 60;
+      fullHours = (min/60).floor;
+      if(leftMinutes > 7 && leftMinutes < 23)
+        leftMinutes = 15;
+      elsif (leftMinutes > 23 && leftMinutes < 37)
+        leftMinutes = 30;
+      elsif (leftMinutes > 37 && leftMinutes < 53)
+        leftMinutes = 45;
+      else
+        leftMinutes = 0;
+      end      
+      result = fullHours.to_s().rjust(2, '0') + ":" + leftMinutes.to_s().rjust(2, '0');
+    else
+      result = "00:00";
+    end
+    return result;  
+  end
+  
+  def getMinutesInHours
+    result = "00:00";
+    if(minutes != nil)
+      leftMinutes = minutes % 60;
+      fullHours = (minutes/60).floor;
+      if(leftMinutes > 7 && leftMinutes < 23)
+        leftMinutes = 15;
+      elsif (leftMinutes > 23 && leftMinutes < 37)
+        leftMinutes = 30;
+      elsif (leftMinutes > 37 && leftMinutes < 53)
+        leftMinutes = 45;
+      else
+        leftMinutes = 0;
+      end      
+      result = fullHours.to_s().rjust(2, '0') + ":" + leftMinutes.to_s().rjust(2, '0');
+    else
+      result = "00:00";
+    end
+    return result;    
+  end
 end

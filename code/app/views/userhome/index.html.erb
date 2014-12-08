@@ -55,7 +55,7 @@
 		<%else%>
 		<td><%= t.clockout.strftime("%H:%M") %></td>
 		<%end%>
-		<td><%= t.minutes %></td>
+		<td><%= t.getMinutesInHours %></td>
 		<% if 0 == t.request_type%>
 		<td>Regular</td>
 		<%elsif 1 == t.request_type%>
