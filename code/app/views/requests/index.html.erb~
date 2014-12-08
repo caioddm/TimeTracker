@@ -1,16 +1,22 @@
-<%= link_to 'Create new request', new_request_path %>
+
 <h1>Listing Requests</h1>
+<div>
+	<%= link_to 'Create new request', new_request_path %>
+	<br />
+	<br />
+</div>
 
 <table id="table-fields">
 	<tr>
 		<th>Employee Name</th>
+		
+		<th>Date</th>
 		<th>Start</th>
 		<th>End </th>
 		<th>Time</th>
-		
-		<th>Date</th>
 		<th>Type</th>
 		<th>Status</th>
+		<th>created at</th>
 		<th></th>
 		<th></th>
 		<th></th>
@@ -29,13 +35,15 @@
 
 	<tr class="<%= trClass%>">
 		<td><%= request.user.name %></td>
-		<td><%= request.start.strftime("%A %d %b %Y") %></td>
-		<td><%= request.end.strftime("%A %d %b %Y") %></td>
-		<td><%= request.minutes %></td>
 		<td><%= request.date %></td>
+		<td><%= request.start.strftime("%H:%M:%S") %></td>
+		<td><%= request.end.strftime("%H:%M:%S") %></td>
+		<td><%= request.minutes %></td>
+		
 		<td><%= Request::TYPE_DROP.index(request.request_type) %></td>
 		<td><%= Request::STATUS_DROP.index(request.status)%></td>
 		<!--<td><%= request.status %></td>-->
+		<td><%= request.created_at %></td>
 		<td><%= link_to 'Show', request %></td>
 		
 		<td><%= link_to 'Destroy', request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
