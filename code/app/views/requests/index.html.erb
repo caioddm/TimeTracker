@@ -9,11 +9,11 @@
 <table id="table-fields">
 	<tr>
 		<th>Employee Name</th>
+		
+		<th>Date</th>
 		<th>Start</th>
 		<th>End </th>
 		<th>Time</th>
-		
-		<th>Date</th>
 		<th>Type</th>
 		<th>Status</th>
 		<th></th>
@@ -34,10 +34,11 @@
 
 	<tr class="<%= trClass%>">
 		<td><%= request.user.name %></td>
-		<td><%= request.start.strftime("%A %d %b %Y") %></td>
-		<td><%= request.end.strftime("%A %d %b %Y") %></td>
-		<td><%= request.minutes %></td>
 		<td><%= request.date %></td>
+		<td><%= request.start.strftime("%H:%M:%S") %></td>
+		<td><%= request.end.strftime("%H:%M:%S") %></td>
+		<td><%= request.minutes %></td>
+		
 		<td><%= Request::TYPE_DROP.index(request.request_type) %></td>
 		<td><%= Request::STATUS_DROP.index(request.status)%></td>
 		<!--<td><%= request.status %></td>-->

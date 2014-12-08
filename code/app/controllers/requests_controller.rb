@@ -2,10 +2,11 @@ class RequestsController < SecureController
   # GET /requests
   # GET /requests.json
   def admin_index
-	 @requests = Request.where(status: 0)
+	 
+	 @requests = Request.where(status: 0).order("requests.created_at DESC")
 	 respond_to do |format|
 	 format.html # admin_index.html.erb
-         format.json { render json: @requests }
+         format.json { render json: @requests}
 	end
   end
 
@@ -15,7 +16,7 @@ class RequestsController < SecureController
     if is_admin
       redirect_to :action=>'admin_index'
     else
-      @requests = Request.where(user_id: current_user.id)
+      @requests = Request.where(user_id: current_user.id).order("requests.created_at DESC")
       respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @requests }
@@ -59,6 +60,7 @@ class RequestsController < SecureController
     @time1 = @request.start
     @time2 = @request.end
     @request.minutes = TimeDifference.between(@time1, @time2).in_minutes
+    @request.created_at=Time.now
       if @request.save
         format.html { redirect_to @request, notice: 'Request was successfully created.' }
         format.json { render json: @request, status: :created, location: @request }
