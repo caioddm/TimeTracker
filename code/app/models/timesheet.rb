@@ -7,15 +7,15 @@ class Timesheet < ActiveRecord::Base
     end_period = Date.today
     day = Date.today.day
     month = Date.today.month
-    if day > 9 && day < 26
-      start_period = Date.new(Date.today.year, Date.today.month, 10)
+    if day > 10 && day < 26
+      start_period = Date.new(Date.today.year, Date.today.month, 11)
       end_period = Date.new(Date.today.year, Date.today.month, 25)    
-    elsif day <= 9
+    elsif day <= 10
       start_period = Date.new(Date.today.month > 1 ? Date.today.year : Date.today.year - 1, Date.today.month > 1 ? Date.today.month - 1 : 12, 26)
-      end_period = Date.new(Date.today.year, Date.today.month, 9)
+      end_period = Date.new(Date.today.year, Date.today.month, 10)
     else
       start_period = Date.new(Date.today.year, Date.today.month, 26)
-      end_period = Date.new(Date.today.month < 12 ? Date.today.year : Date.today.year + 1, Date.today.month < 12 ? Date.today.month + 1 : 1, 9)
+      end_period = Date.new(Date.today.month < 12 ? Date.today.year : Date.today.year + 1, Date.today.month < 12 ? Date.today.month + 1 : 1, 10)
     end
     return start_period, end_period
   end
