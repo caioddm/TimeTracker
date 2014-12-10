@@ -1,6 +1,19 @@
 <h1>Welcome <%=current_user.name%>!</h1>
 
 <div>
+		<%= form_tag('/adminhome/search') do %>
+		<div>
+			<label>Date</label>
+			<%= text_field_tag "date", nil %>
+		</div>
+		<div>
+		    <label>User name</label>
+			<%= text_field_tag "name", nil %>
+		</div>	
+		<%= submit_tag "Search" %>
+		<% end %>
+</div>
+<div>
 		<span style="float: left; font-size:18px; font-weight: bold; margin-right:15px;">Timesheet from <%= @start_period.strftime("%m/%d/%y")%> to <%= @end_period.strftime("%m/%d/%y")%></span>
 </div>
 <br/>

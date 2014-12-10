@@ -12,7 +12,7 @@ class UserhomeController < SecureController
     else
       start_period = Date.today
       end_period = Date.today  
-      period = Timesheet.get_period start_period, end_period
+      period = Timesheet.get_period(start_period, end_period, Date.today)
       @start_period = period[0]
       @end_period = period[1]
   

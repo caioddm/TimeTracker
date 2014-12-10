@@ -2,20 +2,20 @@ class Timesheet < ActiveRecord::Base
   belongs_to :user
   attr_accessible :clockin, :clockout, :date, :minutes, :request_type,:user
   
-  def self.get_period start_period, end_period
-    start_period = Date.today
-    end_period = Date.today
-    day = Date.today.day
-    month = Date.today.month
+  def self.get_period start_period, end_period, select_date
+    start_period = select_date
+    end_period = select_date
+    day = select_date.day
+    month = select_date.month
     if day > 10 && day < 26
-      start_period = Date.new(Date.today.year, Date.today.month, 11)
-      end_period = Date.new(Date.today.year, Date.today.month, 25)    
+      start_period = Date.new(select_date.year, select_date.month, 11)
+      end_period = Date.new(select_date.year, select_date.month, 25)    
     elsif day <= 10
-      start_period = Date.new(Date.today.month > 1 ? Date.today.year : Date.today.year - 1, Date.today.month > 1 ? Date.today.month - 1 : 12, 26)
-      end_period = Date.new(Date.today.year, Date.today.month, 10)
+      start_period = Date.new(select_date.month > 1 ? select_date.year : select_date.year - 1, select_date.month > 1 ? select_date.month - 1 : 12, 26)
+      end_period = Date.new(select_date.year, select_date.month, 10)
     else
-      start_period = Date.new(Date.today.year, Date.today.month, 26)
-      end_period = Date.new(Date.today.month < 12 ? Date.today.year : Date.today.year + 1, Date.today.month < 12 ? Date.today.month + 1 : 1, 10)
+      start_period = Date.new(select_date.year, select_date.month, 26)
+      end_period = Date.new(select_date.month < 12 ? select_date.year : select_date.year + 1, select_date.month < 12 ? select_date.month + 1 : 1, 10)
     end
     return start_period, end_period
   end

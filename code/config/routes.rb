@@ -2,6 +2,7 @@ Code::Application.routes.draw do
   get "timesheet/new"
 
   get "adminhome/index"
+  post "adminhome/search"
 
   get "userhome/index"
 
