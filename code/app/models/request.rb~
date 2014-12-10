@@ -1,5 +1,5 @@
 class Request < ActiveRecord::Base
-  default_scope :order=> 'date DESC'
+  default_scope :order=> 'created_at DESC'
   belongs_to :user
   attr_accessible :comment, :end, :start, :minutes, :request_type, :date, :status, :created_at
   

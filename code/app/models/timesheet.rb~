@@ -2,6 +2,9 @@ class Timesheet < ActiveRecord::Base
   belongs_to :user
   attr_accessible :clockin, :clockout, :date, :minutes, :request_type,:user, :flag
 
+  def initialize
+    flag=0
+  end
   
   def self.get_period start_period, end_period
     start_period = Date.today

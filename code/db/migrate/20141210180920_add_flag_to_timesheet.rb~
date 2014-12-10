@@ -1,0 +1,4 @@
+class AddFlagToTimesheet < ActiveRecord::Migration
+  def change
+  end
+end

@@ -7,7 +7,7 @@ class CreateTimesheets < ActiveRecord::Migration
       t.integer :minutes
       t.integer :type
       t.references :user
-      
+      t.integer :flag
 
       t.timestamps
     end
