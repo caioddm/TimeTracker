@@ -21,11 +21,7 @@
     count = count + 1
 %>
 	<tr class="<%= trClass%>">
-		<%if t.user.last_name%>
-			<td> <%= t.user.name + " " + t.user.last_name%> </td>
-		<%else%>
-			<td> <%=t.user.name%></td>
-	    <% end %>
+		<td> <%= t.user.name%> </td>
 		<td><%= t.getMinutesInHours %></td>
 		<% if 0 == t.request_type%>
 		<td>Regular</td>
