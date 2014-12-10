@@ -53,7 +53,7 @@ class ManageusersController < AdminController
   end
 
   def index
-    @users = User.where("is_user_active = ?", true)
+    @users = User.where("is_user_active = ?", true).order(:last_name)
   end
 
   def destroy
