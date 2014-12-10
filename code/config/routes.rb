@@ -15,6 +15,8 @@ Code::Application.routes.draw do
   
   resources :timesheets
 
+  match 'users/sign_up' => redirect('/404.html')
+
   match "/requests/:id" => "requests#update"
   #resources :requests , :collection => {:update_multiple => :post }
     # post 'update_multiple', on: :collection

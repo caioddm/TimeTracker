@@ -7,8 +7,8 @@
 </div>
 <table id="table-fields" align="center">
 	<tr>
-		<th>First Name</th>
 		<th>Last Name</th>
+		<th>First Name</th>
 		<th>Email</th>
 		<th>Phone</th>
 		<th>Employee Type</th>
@@ -28,8 +28,8 @@
     count = count + 1
 %>
 	<tr class="<%= trClass%>">
-		<td><%= link_to user.name, edit_manageuser_path(user) %></td>
-		<td><%= user.last_name%></td>
+		<td><%= link_to user.last_name, edit_manageuser_path(user) %></td>
+		<td><%= user.name%></td>
 		<td><%= user.email %></td>
 		<td><%= user.phone %></td>
 		<td><% if user.is_admin %>
