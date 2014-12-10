@@ -17,12 +17,12 @@
 <% clockout_status = current_user.timesheets.last && !current_user.timesheets.last.clockout? && current_user.timesheets.last.date == Date.today %>
 
 <%= form_for :timesheet, url: timesheets_path do |f|%>
-<p>
+<p>	
 	<%= f.hidden_field :user_id, :value => current_user.id %>
 	<%= f.hidden_field :request_type, { "regular" => 0, "sick leave" => 1, "holiday leave" => 2, "other" => 3}%>
 	<%= f.submit "Clock-In",:disabled => !clockin_status%>
 	<%= f.submit "Clock-Out",:disabled => !clockout_status%>
-	
+	<span style="float: right; font-size:18px; font-weight: bold;">Timesheet from <%= @start_period%> to <%= @end_period%></span>
 </p>
 <% end %>
 
