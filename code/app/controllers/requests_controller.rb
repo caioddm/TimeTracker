@@ -85,7 +85,7 @@ class RequestsController < SecureController
       if @request.status==1
         
         logger.info "timesheet updated"
-        Timesheet.create(date: @request.date, clockin: @request.start, clockout: @request.end,minutes: @request.minutes, user: @request.user,request_type: @request.request_type)
+        Timesheet.create(date: @request.date, clockin: @request.start, clockout: @request.end,minutes: @request.minutes, user: @request.user,request_type: @request.request_type, flag: 1)
         
       end
 

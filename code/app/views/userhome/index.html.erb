@@ -38,6 +38,7 @@
 		<th>Clock Out</th>
 		<th>Time (in Hours)</th>
 		<th>Type</th>
+		<th></th>
 	</tr>
 	<% count = 0%>
 	<% @timesheets.each do |t|%>
@@ -64,6 +65,11 @@
 		<td>Holiday Leave </td>
 		<%else %>
 		<td>Other</td>
+		<%end%>
+		<% if t.flag==1%>
+		<td>Request</td>
+		<%else%>
+		<td></td>
 		<%end%>
 	</tr>
 	<% end %>
