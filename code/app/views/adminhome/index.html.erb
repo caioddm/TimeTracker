@@ -1,6 +1,7 @@
 <h1>Welcome <%=current_user.name%>!</h1>
 
 <div>
+		<font color="red"><%= flash[:notice]%></font>
 		<%= form_tag('/adminhome/search') do %>
 		<div>
 			<label>Date</label>

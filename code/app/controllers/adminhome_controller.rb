@@ -7,8 +7,14 @@ class AdminhomeController < AdminController
       select_date = Date.today
       period = Timesheet.get_period(start_period, end_period, select_date)
     else
-      select_date= params[:select_date]
-      period = Timesheet.get_period(start_period, end_period, Date.strptime(select_date, '%m/%d/%Y'))
+      
+      begin
+       select_date= Date.strptime(params[:select_date], '%m/%d/%Y')
+       period = Timesheet.get_period(start_period, end_period,select_date )
+      rescue
+        flash[:notice] = "Invalid date format"
+        period = Timesheet.get_period(start_period, end_period, Date.today)            
+      end
     end
     @start_period = period[0]
     @end_period = period[1]
