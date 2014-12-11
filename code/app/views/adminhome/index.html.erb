@@ -1,23 +1,38 @@
 <h1>Welcome <%=current_user.name%>!</h1>
 
 <div>
-		<font color="red"><%= flash[:notice]%></font>
+		<span style=" font-size:18px; font-weight: bold; margin-right:15px; color:red"><center><%= flash[:notice]%></center></span><br/>
 		<%= form_tag('/adminhome/search') do %>
-		<div>
-			<label>Date</label>
-			<%= text_field_tag "date", nil %>
+		<div align="center">
+			<label><span style=" font-size:18px; font-weight: bold; margin-right:15px;">Date</span></label>
+			<%= text_field_tag "date", nil, class: "textbox" %>
+			&nbsp&nbsp&nbsp&nbsp	
+		    <label><span style=" font-size:18px; font-weight: bold; margin-right:15px;">Employee name</span></label>
+			<%= text_field_tag "name", nil, class: "textbox" %>
 		</div>
-		<div>
-		    <label>User name</label>
-			<%= text_field_tag "name", nil %>
-		</div>	
-		<%= submit_tag "Search" %>
+		<br/><br/>
+		<div align="center">
+		<%= submit_tag "Search" , class: "alizarin-flat-button"%>
 		<% end %>
+		</div>
+		 
+<style> 
+.textbox { 
+    background: #FFF url(http://html-generator.weebly.com/files/theme/input-text-9.png) no-repeat 4px 4px; 
+    border: 1px solid #999; 
+    outline:0; 
+    padding-left: 25px;
+    height:25px; 
+    width: 275px; 
+  } 
+</style> 
+
 </div>
+
 <div>
-		<span style="float: left; font-size:18px; font-weight: bold; margin-right:15px;">Timesheet from <%= @start_period.strftime("%m/%d/%y")%> to <%= @end_period.strftime("%m/%d/%y")%></span>
+		<span style=" font-size:18px; font-weight: bold; margin-right:15px;"><center>Timesheet Report from <%= @start_period.strftime("%m/%d/%y")%> to <%= @end_period.strftime("%m/%d/%y")%></center></span>
 </div>
-<br/>
+
 <table id="table-fields" align="center">
 
 	<tr>
